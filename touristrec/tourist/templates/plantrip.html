@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+ {% load static %}
+    <title>
+        website
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href={% static 'css/bootstrap.min.css' %}>
+      <script src={% static 'js/bootstrap.min.js' %}></script>
+    
+</head>
+<body>
+<section class="AS">
+<nav>
+		<div class="logo">
+			<img src= "{% static 'img\tr.png' %}" width="170" height="100">
+		</div>
+		<div class="menu">
+			<a href="/index/">Home</a>
+			<a href="/plantrip/">Plan your Trip</a>
+		</div>
+
+		<div class="icon">
+			<i class="fa fa-search"></i>
+			<a href="/login/">Login/Register</a>
+	</nav>
+   
+   
+   <div class="login-box">
+    <h2>Plan your Trip</h2>
+    <form method="POST"  enctype="multipart/form-data"
+     name="form" action="/plantrip/">
+   {% csrf_token %}
+      <div class="user-box">
+       
+        <input  type="text" name="category"  id="category" value="" >
+        <label>Category</label>
+        
+      </div>
+
+      <div class="user-box">
+        <input type="text" name="district" id="district" value="" >
+        <label>District</label>
+
+      </div>
+       <div class="user-box">
+        <input type="text" name="price" id="price" value="" >
+        <label>Price</label>
+      </div>
+        
+         <button class="btn" type="submit" value="submit"  id="btnSave" >Recommend</button>  
+
+    </form>
+      </div>
+
+
+</section>
+
+<section class="filter-gallery">
+	<div class="portfolio-menu">
+			<ul>
+				<li class="active" data-filter=".seo">Your Recommendations</li>	
+			</ul>
+		</div>
+
+
+<div class="portfolio-item">
+	<div class="item web"  data-aos="flip-left" data-aos-offset="100" data-aos-delay="100">
+			     
+
+
+<div class="row">
+  {% for item in recommendations %}
+    <div class="col-md-6">
+      <div class="col-sm-8 mx-5 my-5">
+        <div class="item seo" data-aos="flip-left" data-aos-offset="100" data-aos-delay="200">
+          <div class="card mx-5 my-5">
+            <img src="{{ item.link }}" alt="" class="card-img-top" style="width: 263px; height: 160px;">
+            <div class="card-body">
+              <p><strong>Place:</strong> {{ item.place }}</p>
+              <p><strong>Category:</strong> {{ item.category }}</p>
+              <p><strong>District:</strong> {{ item.district }}</p>
+              <p><strong>Price:</strong> {{ item.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+	</div>
+	</div>
+ 
+	
+</section>
+
+
+
+      <footer>
+	<div class="newsletter">
+		<div data-aos="fade-up" data-aos-offset="200">
+			<h2>Subscribe our newsletter</h2>
+			<p>We’re a team of non-cynics who truly care for our work.</p>
+		</div>
+		<div class="n-text" data-aos="fade-up-right" data-aos-offset="200">
+			<label>
+				<input type="text" name="" placeholder="Enter your email">
+				<button>Subscribe</button>
+
+			</label>
+		</div>
+	</div>	
+      <div class="f-contact" data-aos="zoom-in-up" data-aos-offset="200">
+		<div>
+			<h1>Information</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur elit. Nihil sit dicta.</p>
+			
+			<i class="fa fa-whatsapp"></i>
+			<i class="fa fa-instagram"></i>
+			<i class="fa fa-telegram"></i>
+			<i class="fa fa-twitter"></i>
+		</div>
+    <div>
+			<h1>Useful links</h1>
+			<p>About us</p>
+			<p>Gallery</p>
+			<p>Blog posts</p>
+			<p>Pricing plans</p>
+		</div>
+        	<div>
+			<h1>Details</h1>
+			<p>Photographers</p>
+			<p>Gallery</p>
+			<p>About</p>
+			<p>Pricing plans</p>
+		</div>
+		<div>
+			<h1>Help & Support</h1>
+			<p>Privacy policy</p>
+			<p>Term & conditions</p>
+			<p>Technical support</p>
+			<p>Customer care</p>
+
+		</div>
+	</div>
+</footer>
+
+   
+       
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+	$('.portfolio-item').isotope({
+  // options
+  itemSelector: '.item',
+  layoutMode: 'fitRows'
+});
+		$('.portfolio-menu ul li').click(function(){
+		$('.portfolio-menu ul li').removeClass('active');
+		$(this).addClass('active');
+
+			var selector = $(this).attr('data-filter');
+		$('.portfolio-item').isotope({
+			filter:selector
+		});
+		return false;
+	});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
+
+
+
+

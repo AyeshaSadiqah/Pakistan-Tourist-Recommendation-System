@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Pakistan Tourist Recommendation System</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<header>
+	<nav>
+		<div class="logo">
+			<img src="{% static 'img/tr.png' %}" width="170" height="100">
+		</div>
+		<div class="menu">
+			<a href="{% url 'index' %}">Home</a>
+			<a href="{% url 'plantrip' %}">Plan your Trip</a>
+		</div>
+		<div class="icon">
+			<i class="fa fa-search"></i>
+			<a href="{% url 'login' %}">Login/Register</a>
+		</div>
+	</nav>
+
+	<section class="h-text">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 data-aos="zoom-in-down" data-aos-delay="100">Don’t let fear get in the way of the life you are meant to live.</h1>
+					<input  placeholder="Search here...">
+					<button ><i class="fa fa-search"></i></button>
+				</div>
+			</div>
+		</div>
+	</section>
+</header>
+
+<section class="filter-gallery">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="portfolio-menu">
+					<ul>
+						<li class="active" data-filter=".seo">Popular places</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			{% for item in data %}
+			  <div class="col-md-4">
+				<div class="col-sm-10 mx-3 my-5">
+				  <div class="item seo" data-aos="flip-left" data-aos-offset="100" data-aos-delay="200">
+					<div class="card mx-5 my-5">
+					  <img src="{{ item.3 }}" alt="" class="card-img-top" style="width: 300px; height: 200px;">
+					  <div class="card-body">
+						<h5 class="card-title">{{ item.0 }}</h5>
+						<p class="card-text">{{ item.1 }}</p>
+						<p class="card-text red">{{ item.2 }}</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			{% endfor %}
+		  </div>
+		  
+	</div>
+</section>
+<section class="members">
+	<div class="member-info" data-aos="zoom-in-up" data-aos-delay="100">
+		<h1>About <span> Us</span></h1>
+		<p>What our members say</p>
+	</div>
+
+	<div class="member-card" data-aos="zoom-in-down" data-aos-delay="300">
+		<img src="{% static 'img/tr.png' %}" width="200" height="130">
+		<p>
+			Tourism gives an opportunity for people of various cultures to assimilate together. People belonging to various cultures meet and understand each other, fostering cultural harmony. Many people visit other places for medical treatment, improving health, and wellness tourism. Wellness tourism aims to achieve complete mental, psychological, and physical well-being. There are many tourism destinations offering therapies for improving health and wellness.
+		</p>
+		<h2>* Pakistan Tourist </h2>
+		<img src="{% static 'img/icon1.png' %}" width="100">
+		<img src="{% static 'img/icon2.png' %}" width="100">
+		<img src="{% static 'img/icon3.png' %}" width="100">
+		<img src="{% static 'img/icon4.png' %}" width="100">
+	</div>
+
+	<div class="m-images" data-aos="zoom-in" data-aos-delay="300">
+		<img src="{% static 'img/s1.jpg' %}">
+		<img src="{% static 'img/s2.jpg' %}">
+		<img src="{% static 'img/s3.jpg' %}">
+		<img src="{% static 'img/s4.jpg' %}">
+		<img src="{% static 'img/s5.jpg' %}">
+		<img src="{% static 'img/s6.jpg' %}">
+	</div>
+</section>
+<footer>
+	<div class="newsletter">
+		<div data-aos="fade-up" data-aos-delay="200">
+			<h2>Subscribe to our newsletter</h2>
+			<p>We’re a team of non-cynics who truly care for our work.</p>
+		</div>
+		<div class="n-text" data-aos="fade-up-right" data-aos-delay="200">
+			<label>
+				<input type="text" name="" placeholder="Enter your email">
+				<button>Subscribe</button>
+			</label>
+		</div>
+	</div>
+
+	<div class="f-contact" data-aos="zoom-in-up" data-aos-delay="200">
+		<div>
+			<h1>Information</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur elit. Nihil sit dicta.</p>
+			<i class="fa fa-whatsapp"></i>
+			<i class="fa fa-instagram"></i>
+			<i class="fa fa-telegram"></i>
+			<i class="fa fa-twitter"></i>
+		</div>
+		<div>
+			<h1>Useful links</h1>
+			<p>About us</p>
+			<p>Gallery</p>
+			<p>Blog posts</p>
+			<p>Pricing plans</p>
+		</div>
+		<div>
+			<h1>Details</h1>
+			<p>Photographers</p>
+			<p>Gallery</p>
+			<p>About</p>
+			<p>Pricing plans</p>
+		</div>
+		<div>
+			<h1>Help & Support</h1>
+			<p>Privacy policy</p>
+			<p>Term & conditions</p>
+			<p>Technical support</p>
+			<p>Customer care</p>
+		</div>
+	</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+	$('.portfolio-item').isotope({
+		itemSelector: '.item',
+		layoutMode: 'fitRows'
+	});
+
+	$('.portfolio-menu ul li').click(function(){
+		$('.portfolio-menu ul li').removeClass('active');
+		$(this).addClass('active');
+
+		var selector = $(this).attr('data-filter');
+		$('.portfolio-item').isotope({
+			filter: selector
+		});
+		return false;
+	});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

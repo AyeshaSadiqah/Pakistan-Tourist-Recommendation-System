@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+ {% load static %}
+    <title>
+        website
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+</head>
+<body>
+<section class="AS">
+<nav>
+		<div class="logo">
+			<img src="{% static "img\tr.png"  %}" width="170" height="100">
+		</div>
+		<div class="menu">
+			<a href={% url "index" %}>Home</a>
+			<a href={% url "plantrip" %}>Plan your Trip</a>
+		</div>
+	<div class="icon">
+			<i class="fa fa-search"></i>
+			<a href="/login/">Login/Register</a>
+	</nav>
+   
+   
+   <div class="login-box">
+    <h2>Login</h2>
+
+    <form action="" name="form" onsubmit=" return validateForm()" method="post" id="form">
+
+      <div class="user-box">
+        <input type="text" name="uname" id="uname" value=""><span id="unameError"></span>
+        <label>User Name</label>
+        </div>
+       
+      <div class="user-box">
+        <input type="password" name="pass" id="pas" value=""><span id="pasError"></span>
+        <label>Password</label>
+         </div>
+
+          <div>   
+           <a  href={% url "signin" %}> Create an account.</a>       
+        </div>
+
+           
+      
+         <button class="btn" type="submit" value="submit" >Submit</button>
+         <button class="btn">Cancel</button>
+         
+          
+    </form>
+      </div>
+   </section>
+   <footer>
+	
+	<div class="newsletter">
+		<div data-aos="fade-up" data-aos-offset="200">
+			<h2>Subscribe our newsletter</h2>
+			<p>We’re a team of non-cynics who truly care for our work.</p>
+		</div>
+		<div class="n-text" data-aos="fade-up-right" data-aos-offset="200">
+			<label>
+				<input type="text" name="" placeholder="Enter your email">
+				<button>Subscribe</button>
+
+			</label>
+		</div>
+	</div>	
+	<div class="f-contact" data-aos="zoom-in-up" data-aos-offset="200">
+		<div>
+			<h1>Information</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur elit. Nihil sit dicta.</p>
+			
+			<i class="fa fa-whatsapp"></i>
+			<i class="fa fa-instagram"></i>
+			<i class="fa fa-telegram"></i>
+			<i class="fa fa-twitter"></i>
+		</div>
+    <div>
+			<h1>Useful links</h1>
+			<p>About us</p>
+			<p>Gallery</p>
+			<p>Blog posts</p>
+			<p>Pricing plans</p>
+		</div>
+		<div>
+			<h1>Details</h1>
+			<p>Photographers</p>
+			<p>Gallery</p>
+			<p>About</p>
+			<p>Pricing plans</p>
+		</div>
+		<div>
+			<h1>Help & Support</h1>
+			<p>Privacy policy</p>
+			<p>Term & conditions</p>
+			<p>Technical support</p>
+			<p>Customer care</p>
+
+		</div>
+	</div>
+</footer>
+
+
+
+
+
+
+
+
+    
+  
+
+      <script>
+       function  validateForm(){
+         // firstname validation
+        var correct_way = /^[A-Za-z]+$/;
+        var a =document.getElementById("fname").value;
+        if(a==""){
+          document.getElementById("fnameError").innerHTML="Please enter name";
+          return false;
+         }  
+         if(a.length<3){
+          document.getElementById("fnameError").innerHTML="Invalid";
+          return false;
+         }
+         if(a.length>20){
+          document.getElementById("fnameError").innerHTML="Invalid";
+          return false;
+         }
+        if(a.match(correct_way))
+          true;
+          else{
+            document.getElementById("fnameError").innerHTML="Invalid";
+           return false;
+          }
+
+
+           // lastname validation
+        var correct_way = /^[A-Za-z]+$/;
+        var b =document.getElementById("lname").value;
+        if(b==""){
+          document.getElementById("lnameError").innerHTML="Please enter name";
+          return false;
+         }  
+
+         if(b.length<3){
+          document.getElementById("lnameError").innerHTML="Invalid";
+          return false;
+         }
+         if(b.length>20){
+          document.getElementById("lnameError").innerHTML="Invalid";
+          return false;
+         }
+        if(b.match(correct_way))
+          true;
+          else{
+            document.getElementById("lnameError").innerHTML="Invalid";
+           return false;
+          }
+
+        
+         // pasword validation
+          var p =document.getElementById("pas").value;
+          var cp =document.getElementById("cpas").value;
+          if(p.length<3){
+          document.getElementById("pasError").innerHTML="Invalid";
+          return false;
+          } 
+          if(p.length>20){
+          document.getElementById("pasError").innerHTML="Invalid";
+          return false;
+          } 
+          const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+          if (!regex.test(p)) {
+          document.getElementById("pasError").innerHTML="Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+          return false;
+          }
+          if(p!=cp){
+          document.getElementById("pasError").innerHTML="Passwords are not same";
+          return false;
+          }
+        
+        // email validation
+ 
+              var email = document.getElementById("email").value;
+            if(email==""){
+             document.getElementById("emailError").innerHTML="Please enter email";
+           return false;
+            }   
+                 if(e.indexOf("@")<=0){
+          document.getElementById("emailError").innerHTML="Invalid";
+         return false;
+        }
+        if((e.charAt(e.length-4)!=".") && (e.charAt(e.length-3)!=".")){
+          document.getElementById("emailError").innerHTML="Invalid";
+         return false;
+          }
+
+  }
+      </script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+	$('.portfolio-item').isotope({
+  // options
+  itemSelector: '.item',
+  layoutMode: 'fitRows'
+});
+		$('.portfolio-menu ul li').click(function(){
+		$('.portfolio-menu ul li').removeClass('active');
+		$(this).addClass('active');
+
+			var selector = $(this).attr('data-filter');
+		$('.portfolio-item').isotope({
+			filter:selector
+		});
+		return false;
+	});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+</script>
+
+</body>
+
+</html>
